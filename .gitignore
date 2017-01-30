@@ -1,0 +1,8 @@
+*.pyc
+*.xml
+.idea/Nancy-The-Virtual-Assistant.iml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/workspace.xml
