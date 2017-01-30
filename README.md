@@ -11,9 +11,6 @@ Errorists
 * [Raghav Maheshwari](https://github.com/imnobody0396)
 * [Rustam Ali](https://github.com/Rustamjadara)
 
-## Project Client
-* [Youstart Labs](http://youstartlabs.in)
-
 ## Project Description
 ```
 Now-a-days, no doubt there are many virtual assistants available in market but none of them are cross platform 
