@@ -1,0 +1,18 @@
+External Python Packages :-
+
+wikipedia==1.4.0
+wolframalpha==2.4
+SpeechRecognition==3.4.6
+pyperclip==1.5.27
+gTTS==1.1.6
+google==1.9.1
+pytube==6.1.11
+lxml==3.7.0
+speedtest-cli==1.0.0
+beautifulsoup4==4.4.1
+chatterbot==0.5.5
+
+
+Software Required :-
+
+Sudo apt-get install mpg123
