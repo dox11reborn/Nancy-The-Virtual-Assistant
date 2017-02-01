@@ -1,3 +1,5 @@
+### Author - Raghav Maheshwari ###
+
 import pyperclip
 from AudioIO import speak
 

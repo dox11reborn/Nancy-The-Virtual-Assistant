@@ -1,3 +1,5 @@
+### Author - Raghav Maheshwari ###
+
 from wolframalpha import Client
 from os import listdir
 

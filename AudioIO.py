@@ -1,3 +1,5 @@
+### Author - Raghav Maheshwari ###
+
 import speech_recognition
 from gtts import gTTS
 from subprocess import getoutput

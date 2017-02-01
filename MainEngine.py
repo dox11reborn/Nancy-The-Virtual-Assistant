@@ -1,3 +1,6 @@
+### Author - Raghav Maheshwari ###
+
+
 #!/usr/bin/python3
 import notify2, nautilus
 import tkinter as tk
@@ -103,8 +106,8 @@ def main(text):
     elif search(r'(google)|(search)', text):
         speak(get_result(text))
 
-    #elif search(r'download\s(audio)|(song)', text):
-    #    speak(page_link(' '.join(text.split()[2:])))
+    elif search(r'download\s(audio)|(song)', text):
+        speak(page_link(' '.join(text.split()[2:])))
 
     elif search(r'download\s(video)|(mp4)', text):
         speak(youtube_link(' '.join(text.split()[2:])))

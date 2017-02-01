@@ -1,3 +1,5 @@
+### Author - Raghav Maheshwari ###
+
 import requests, bs4, AudioIO
 from os import chdir
 from settings import MP3_DIR

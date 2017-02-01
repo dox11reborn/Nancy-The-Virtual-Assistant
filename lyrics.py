@@ -1,3 +1,5 @@
+### Author - Raghav Maheshwari ###
+
 import requests, bs4, google
 from settings import LYRICS_DIR
 from os import chdir
