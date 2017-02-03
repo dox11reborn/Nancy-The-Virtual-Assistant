@@ -24,9 +24,9 @@ def listen():
 # Voice Output Function
 def speak(text):
     try:
-        path = '/home/imnobody0396/Documents/Nancy-VA--Ubuntu/speeches/nancy.mp3'
+        path = '/home/imnobody0396/Documents/Nancy-The-Virtual-Assistant/speeches/nancy.mp3'
         tts = gTTS(text, lang="hi")
         tts.save(path)
         getoutput("mpg123 " + path)
-    except:
-        pass
+    except Exception as ex:
+        print(ex)

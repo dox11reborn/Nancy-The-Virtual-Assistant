@@ -120,7 +120,7 @@ def gen_file_path(text):
                         opt.append(i)
     print(opt)
     try:
-        open_file(opt[0])
+        return open_file(opt[0])
     except Exception as ex:
         print(ex)
 

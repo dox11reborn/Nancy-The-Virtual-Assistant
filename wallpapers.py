@@ -28,12 +28,12 @@ def getWallpapers(soup):
 def down_link(soup, title):
     link = soup.find('a', {'title': "HD 16:9 1600 x 900 wallpaper"})
     wall_link = url + link.get('href')
-    print(wall_link)
+    #print(wall_link)
     down_wall(wall_link, title)
 
 
 def down_wall(link, title):
-    print(link + " -> " + title)
+    #print(link + " -> " + title)
     getoutput("wget " + link)
     print('Downloaded ' + title)
 

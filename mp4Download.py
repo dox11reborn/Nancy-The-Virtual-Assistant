@@ -17,6 +17,7 @@ def vid_download(link):
         yt = YouTube(link)
     except:
         print("Cipher Error")
+        return ("Cipher Error")
 
     pprint(yt.get_videos())
     quality = ['720p', '480p', '360p']
@@ -40,7 +41,7 @@ def youtube_link(text):
     #link = soup.select_one('cite').getText()
     #print(text,link, lucky(text))
     try:
-        vid_download(lucky(text))
+        return vid_download(lucky(text))
     except Exception as ex:
         AudioIO.speak("Age Restricted Video")
 

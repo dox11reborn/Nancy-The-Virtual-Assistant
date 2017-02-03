@@ -1,39 +1,74 @@
-### Author - Raghav Maheshwari ###
-
 #!/usr/bin/python3
 from tkinter import *
+from tkinter import ttk
 from AudioIO import listen, speak
 from MainEngine import main
+from settings import LOGO_PATH
+from _thread import start_new_thread
 
 
 def getTextInput():
-    main(user_command.get())
+    main(box.get() + user_command.get())
 
 
 def getVoInput():
+    box.set('')
     user_command.delete(0, END)
     speak('listening')
     text = listen().lower()
     user_command.insert(0, text)
-    main(text)
+    start_new_thread(main, (text,))
+
+
+def open_log():
+    main('open file microphone_log')
+
+
+def open_req():
+    main('open file requirements')
 
 
 root = Tk()
-frame = Frame(root, height=200, width=200)
+frame = Frame(root, height=200, width=20)
+root.title('Nancy')
 
-#action = Menubutton(root, text="Action")
-#action.grid()
-#options = Menu(action, tearoff=0)
-#action["options"] = options
+# Menubar
+menubar = Menu(root)
+filemenu = Menu(menubar, tearoff=0)
+filemenu.add_command(label="Logs", command=open_log)
+filemenu.add_command(label="Requirements", command=open_req)
+
+filemenu.add_separator()
+
+filemenu.add_command(label="Exit", command=root.quit)
+menubar.add_cascade(label="Extras", menu=filemenu)
+
+root.config(menu=menubar)
+
+# Label - Logo
+photo = PhotoImage(file=LOGO_PATH)
+Label(root, image=photo).grid(row=0, columnspan=2)
+
+# ComboBox - Select Command
+value = StringVar()
+box = ttk.Combobox(root, textvariable=value, state='readonly')
+box['values'] = ('google ', 'play audio ', 'play video ', 'download audio ', 'download video ',
+                 'open file ', 'open folder ', 'open drive ', 'execute ', 'browse ')
+box.set("Select Command")
+box.grid(row=1, column=0)
 
 
-Label(root, text="Command").grid(row=0, column=0)
-user_command = Entry(root, bd=1)
-user_command.grid(row=0, column=2)
+# Entry - User Request
+user_command = Entry(root, bd=2)
+user_command.grid(row=1, column=1)
 
-#photo = PhotoImage(file="microphone.png")
-btn_search = Button(root, text="Search", width=10, command=getTextInput).grid(row=1, column=0)
-btn_voInput = Button(root, text="Microphone", width=10, command=getVoInput).grid(row=1, column=1)
+# Button - Search
+btn_search = Button(root, text="Search", width=18, command=getTextInput,
+                    bg="#4169e1", fg="white").grid(row=2, column=1)
+
+# Button - Microphone
+btn_voInput = Button(root, text="Microphone", width=19, command=getVoInput,
+                     bg="#DF0101", fg="white").grid(row=2, column=0)
 
 
 root.mainloop()
