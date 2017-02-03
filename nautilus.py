@@ -74,7 +74,8 @@ def gen_folder_path(text):
     print(text)
     opt = []
     for index, drive in enumerate(mounted_drives):
-        cmd = "find " + drive + " \(" + except_dirs + " \) -prune -o -type d -iname " + '*' + text + '*'
+        cmd = "find " + drive + " \(" + except_dirs + " \) -prune -o -type d -iname " + '\'*' + text + '*\''
+        #print(cmd)
         r = getoutput(cmd)
         if text in r.lower():
             for i in r.split('\n'):
@@ -111,7 +112,6 @@ def gen_file_path(text):
     for index, drive in enumerate(mounted_drives):
         for ext in extension:
             cmd = "find " + drive + " \(" + except_dirs + " \) -prune -o -type f -iname " + '\'*'+text+'*'+ext+'\''
-            #print(cmd)
             r = getoutput(cmd)
             #print(r)
             if text in r.lower():

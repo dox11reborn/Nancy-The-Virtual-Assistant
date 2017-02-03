@@ -2,8 +2,8 @@
 from tkinter import *
 from tkinter import ttk
 from AudioIO import listen, speak
-from MainEngine import main
-from settings import LOGO_PATH
+from MainEngine import main, update_log
+from settings import LOGO_PATH, LOG_DIR
 from _thread import start_new_thread
 
 
@@ -24,12 +24,20 @@ def open_log():
     main('open file microphone_log')
 
 
+def yes_log():
+    update_log(user_command.get() + ' $EXPECTED$')
+
+
+def no_log():
+    update_log(user_command.get() + ' $UNEXPECTED$')
+
+
 def open_req():
     main('open file requirements')
 
 
 root = Tk()
-frame = Frame(root, height=200, width=20)
+frame = Frame(root, height=200, width=200)
 root.title('Nancy')
 
 # Menubar
@@ -43,6 +51,7 @@ filemenu.add_separator()
 filemenu.add_command(label="Exit", command=root.quit)
 menubar.add_cascade(label="Extras", menu=filemenu)
 
+mb = Menubutton()
 root.config(menu=menubar)
 
 # Label - Logo
@@ -70,6 +79,19 @@ btn_search = Button(root, text="Search", width=18, command=getTextInput,
 btn_voInput = Button(root, text="Microphone", width=19, command=getVoInput,
                      bg="#DF0101", fg="white").grid(row=2, column=0)
 
+# Button - Yes
+photo_yes = PhotoImage(file=LOG_DIR+'images/yes.png')
+yes_img = photo_yes.subsample(40, 40)
+btn_voInput = Button(root, text="Expected O/P", command=yes_log,
+                     bg="green", fg="white", image=yes_img).grid(row=3)
+
+# Button - No
+photo_no = PhotoImage(file=LOG_DIR+'images/no.png')
+no_img = photo_no.subsample(40, 40)
+btn_voInput = Button(root, text="Unexpected O/P", command=no_log,
+                     bg="#DF0101", fg="white", image=no_img).grid(row=3, column=1)
+
 
 root.mainloop()
+
 

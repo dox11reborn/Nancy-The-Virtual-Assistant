@@ -6,6 +6,7 @@ import notify2, nautilus
 import tkinter as tk
 from re import match,search
 from os import chdir
+from random import choice
 from settings import LOG_DIR, LOGO_PATH
 from datetime import datetime
 from temperature import getTemperature
@@ -60,9 +61,18 @@ def main(text):
     if text in ["who are you", "introduce yourself"]:
         speak('I am Nancy, your personal assistant.')
         return
-    elif text == "describe yourself":
+    elif "describe yourself" in text:
         speak("I am Nancy, your personal assistant. I use python's speech recognition module "
                           "to understand voice input, and google's text to speech technology to give output.")
+        return
+    elif "toss a coin" in text:
+        if choice(range(1, 11)) % 2 == 0:
+            speak('It is tails')
+        else:
+            speak('It is heads')
+        return
+    elif text in ["throw a dice", "throw a die"]:
+        speak(str(choice(range(1, 7))))
         return
     '''
     elif text in ["stop", "go to sleep"]:
